@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Регистрация сделки</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="layout" id="layout-root">
+      <aside class="sidebar">
+        <div class="vk-logo">
+          <img class="vk-logo-icon" src="img/vk.svg" alt="VK" />
+          <img class="vk-logo-tech" src="img/VK tech Logo.svg" alt="VK Tech" />
+        </div>
+        <nav class="sidebar-nav" aria-label="Навигация">
+          <button class="icon-btn" data-section="home" aria-label="Главная">
+            <img class="menu-icon" src="img/VKCloudIcon.svg" alt="" />
+            <span class="menu-label">Главная</span>
+          </button>
+          <button class="icon-btn active" data-section="deals" aria-label="Регистрация сделки">
+            <img class="menu-icon" src="img/folder.svg" alt="" />
+            <span class="menu-label">Регистрация сделки</span>
+          </button>
+          <button class="icon-btn" data-section="marketing" aria-label="Маркетинговый материал">
+            <img class="menu-icon" src="img/book.svg" alt="" />
+            <span class="menu-label">Маркетинговый материал</span>
+          </button>
+          <button class="icon-btn" data-section="learning" aria-label="Обучение">
+            <img class="menu-icon" src="img/hat.svg" alt="" />
+            <span class="menu-label">Обучение</span>
+          </button>
+          <button class="icon-btn" data-section="features" aria-label="Возможности">
+            <img class="menu-icon" src="img/list.svg" alt="" />
+            <span class="menu-label">Возможности</span>
+          </button>
+        </nav>
+        <button id="sidebar-toggle" class="collapse-btn" aria-label="Свернуть панель" aria-expanded="false">
+          <img src="img/DoubleCornerArrowRightIcon.svg" alt="" />
+        </button>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-spacer"></div>
+          <div class="topbar-right">
+            <button class="icon-btn bell" aria-label="Уведомления">
+              <img class="bell-svg" src="img/BellIcon.svg" alt="" />
+              <img class="notif-dot" src="img/Dot.svg" alt="" />
+            </button>
+            <div class="profile">
+              <div class="avatar">
+                <span class="avatar-letter"></span>
+              </div>
+              <div class="profile-text">
+                <strong>a.komissarov@corp.vk.ru</strong>
+                <span>Администратор проекта</span>
+              </div>
+              <img class="profile-chevron" src="img/CornerArrowDownIcon.svg" alt="" />
+            </div>
+            <button class="help-link" type="button">
+              <img src="img/HelpIcon.svg" alt="" />
+              <span>Помощь</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="content">
+          <p id="section-subtitle" class="subtitle">Регистрация сделки</p>
+          <h1 id="section-title">Регистрация сделки</h1>
+
+          <div id="deals-content">
+
+          <div class="tabs">
+            <button type="button" class="tab" data-tab="confirmed">Подтвержденные регистрации</button>
+            <button type="button" class="tab active" data-tab="open">Открытые заявки</button>
+          </div>
+
+          <div id="open-tab-panel" class="tab-panel is-visible">
+            <div class="toolbar">
+              <div class="toolbar-left">
+                <button class="primary-btn" type="button">
+                  <img src="img/AddIcon.svg" alt="" />
+                  <span>Новая заявка</span>
+                </button>
+                <button id="report-open-btn" class="secondary-btn" type="button">
+                  <img src="img/ExportIcon.svg" alt="" />
+                  <span>Отчет по заявкам</span>
+                </button>
+              </div>
+              <div class="toolbar-right">
+                <div class="dropdown" id="status-dropdown">
+                  <button class="select-btn dropdown-toggle" type="button" aria-expanded="false">
+                    <span id="status-dropdown-label">Все заявки</span>
+                    <img src="img/dropdown.svg" alt="" />
+                  </button>
+                  <div id="status-dropdown-menu" class="dropdown-menu" role="menu"></div>
+                </div>
+                <div class="dropdown" id="product-dropdown">
+                  <button class="select-btn dropdown-toggle" type="button" aria-expanded="false">
+                    <span id="product-dropdown-label">Все продукты</span>
+                    <img src="img/dropdown.svg" alt="" />
+                  </button>
+                  <div class="dropdown-menu" role="menu">
+                    <button type="button" class="dropdown-item active" data-product-filter="all">Все продукты</button>
+                    <button type="button" class="dropdown-item" data-product-filter="VK Cloud">VK Cloud</button>
+                    <button type="button" class="dropdown-item" data-product-filter="VK Workspace">VK WorkSpace</button>
+                    <button type="button" class="dropdown-item" data-product-filter="VK HR Tek">VK HR Tek</button>
+                  </div>
+                </div>
+                <label class="search">
+                  <img src="img/SearchIcon.svg" alt="" />
+                  <input type="text" placeholder="Название или ИНН компании" />
+                </label>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <colgroup>
+                  <col class="request-col" />
+                  <col />
+                  <col />
+                  <col />
+                  <col />
+                  <col />
+                  <col class="actions-col" />
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th class="request-head sortable is-active" data-sort-key="request">
+                      <button class="th-sort-btn" type="button" aria-label="Сортировать по заявке">
+                        <span class="th-label">Заявка</span>
+                        <svg class="sort-icon" viewBox="0 0 20 20" aria-hidden="true">
+                          <path
+                            class="sort-down"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M12.2777 11.9545C11.981 11.656 11.4996 11.6556 11.2025 11.9538L9.9995 13.1564L8.79759 11.9538C8.50053 11.6557 8.01916 11.6559 7.72242 11.9544C7.42568 12.2529 7.42594 12.7366 7.723 13.0347L9.46215 14.7765C9.75896 15.0745 10.2398 15.0745 10.5367 14.7766L12.277 13.0348C12.5741 12.7367 12.5744 12.253 12.2777 11.9545Z"
+                          />
+                          <path
+                            class="sort-up"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M7.72233 8.04553C8.01904 8.34404 8.5004 8.34436 8.79749 8.04622L10.0005 6.84361L11.2024 8.04616C11.4995 8.34433 11.9808 8.34407 12.2776 8.04558C12.5743 7.7471 12.5741 7.26342 12.277 6.96525L10.5379 5.22346C10.241 4.92554 9.76016 4.92551 9.46332 5.2234L7.72302 6.96519C7.42593 7.26333 7.42562 7.74701 7.72233 8.04553Z"
+                          />
+                        </svg>
+                      </button>
+                    </th>
+                    <th class="sortable" data-sort-key="company">
+                      <button class="th-sort-btn" type="button" aria-label="Сортировать по компании">
+                        <span class="th-label">Компания</span>
+                        <svg class="sort-icon" viewBox="0 0 20 20" aria-hidden="true">
+                          <path
+                            class="sort-down"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M12.2777 11.9545C11.981 11.656 11.4996 11.6556 11.2025 11.9538L9.9995 13.1564L8.79759 11.9538C8.50053 11.6557 8.01916 11.6559 7.72242 11.9544C7.42568 12.2529 7.42594 12.7366 7.723 13.0347L9.46215 14.7765C9.75896 15.0745 10.2398 15.0745 10.5367 14.7766L12.277 13.0348C12.5741 12.7367 12.5744 12.253 12.2777 11.9545Z"
+                          />
+                          <path
+                            class="sort-up"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M7.72233 8.04553C8.01904 8.34404 8.5004 8.34436 8.79749 8.04622L10.0005 6.84361L11.2024 8.04616C11.4995 8.34433 11.9808 8.34407 12.2776 8.04558C12.5743 7.7471 12.5741 7.26342 12.277 6.96525L10.5379 5.22346C10.241 4.92554 9.76016 4.92551 9.46332 5.2234L7.72302 6.96519C7.42593 7.26333 7.42562 7.74701 7.72233 8.04553Z"
+                          />
+                        </svg>
+                      </button>
+                    </th>
+                    <th class="sortable" data-sort-key="product">
+                      <button class="th-sort-btn" type="button" aria-label="Сортировать по продукту">
+                        <span class="th-label">Продукт</span>
+                        <svg class="sort-icon" viewBox="0 0 20 20" aria-hidden="true">
+                          <path
+                            class="sort-down"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M12.2777 11.9545C11.981 11.656 11.4996 11.6556 11.2025 11.9538L9.9995 13.1564L8.79759 11.9538C8.50053 11.6557 8.01916 11.6559 7.72242 11.9544C7.42568 12.2529 7.42594 12.7366 7.723 13.0347L9.46215 14.7765C9.75896 15.0745 10.2398 15.0745 10.5367 14.7766L12.277 13.0348C12.5741 12.7367 12.5744 12.253 12.2777 11.9545Z"
+                          />
+                          <path
+                            class="sort-up"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M7.72233 8.04553C8.01904 8.34404 8.5004 8.34436 8.79749 8.04622L10.0005 6.84361L11.2024 8.04616C11.4995 8.34433 11.9808 8.34407 12.2776 8.04558C12.5743 7.7471 12.5741 7.26342 12.277 6.96525L10.5379 5.22346C10.241 4.92554 9.76016 4.92551 9.46332 5.2234L7.72302 6.96519C7.42593 7.26333 7.42562 7.74701 7.72233 8.04553Z"
+                          />
+                        </svg>
+                      </button>
+                    </th>
+                    <th class="sortable" data-sort-key="inn">
+                      <button class="th-sort-btn" type="button" aria-label="Сортировать по ИНН">
+                        <span class="th-label">ИНН</span>
+                        <svg class="sort-icon" viewBox="0 0 20 20" aria-hidden="true">
+                          <path
+                            class="sort-down"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M12.2777 11.9545C11.981 11.656 11.4996 11.6556 11.2025 11.9538L9.9995 13.1564L8.79759 11.9538C8.50053 11.6557 8.01916 11.6559 7.72242 11.9544C7.42568 12.2529 7.42594 12.7366 7.723 13.0347L9.46215 14.7765C9.75896 15.0745 10.2398 15.0745 10.5367 14.7766L12.277 13.0348C12.5741 12.7367 12.5744 12.253 12.2777 11.9545Z"
+                          />
+                          <path
+                            class="sort-up"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M7.72233 8.04553C8.01904 8.34404 8.5004 8.34436 8.79749 8.04622L10.0005 6.84361L11.2024 8.04616C11.4995 8.34433 11.9808 8.34407 12.2776 8.04558C12.5743 7.7471 12.5741 7.26342 12.277 6.96525L10.5379 5.22346C10.241 4.92554 9.76016 4.92551 9.46332 5.2234L7.72302 6.96519C7.42593 7.26333 7.42562 7.74701 7.72233 8.04553Z"
+                          />
+                        </svg>
+                      </button>
+                    </th>
+                    <th class="sortable" data-sort-key="status">
+                      <button class="th-sort-btn" type="button" aria-label="Сортировать по статусу">
+                        <span class="th-label">Статус</span>
+                        <svg class="sort-icon" viewBox="0 0 20 20" aria-hidden="true">
+                          <path
+                            class="sort-down"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M12.2777 11.9545C11.981 11.656 11.4996 11.6556 11.2025 11.9538L9.9995 13.1564L8.79759 11.9538C8.50053 11.6557 8.01916 11.6559 7.72242 11.9544C7.42568 12.2529 7.42594 12.7366 7.723 13.0347L9.46215 14.7765C9.75896 15.0745 10.2398 15.0745 10.5367 14.7766L12.277 13.0348C12.5741 12.7367 12.5744 12.253 12.2777 11.9545Z"
+                          />
+                          <path
+                            class="sort-up"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M7.72233 8.04553C8.01904 8.34404 8.5004 8.34436 8.79749 8.04622L10.0005 6.84361L11.2024 8.04616C11.4995 8.34433 11.9808 8.34407 12.2776 8.04558C12.5743 7.7471 12.5741 7.26342 12.277 6.96525L10.5379 5.22346C10.241 4.92554 9.76016 4.92551 9.46332 5.2234L7.72302 6.96519C7.42593 7.26333 7.42562 7.74701 7.72233 8.04553Z"
+                          />
+                        </svg>
+                      </button>
+                    </th>
+                    <th class="sortable" data-sort-key="date">
+                      <button class="th-sort-btn" type="button" aria-label="Сортировать по дате начала">
+                        <span class="th-label">Дата начала</span>
+                        <svg class="sort-icon" viewBox="0 0 20 20" aria-hidden="true">
+                          <path
+                            class="sort-down"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M12.2777 11.9545C11.981 11.656 11.4996 11.6556 11.2025 11.9538L9.9995 13.1564L8.79759 11.9538C8.50053 11.6557 8.01916 11.6559 7.72242 11.9544C7.42568 12.2529 7.42594 12.7366 7.723 13.0347L9.46215 14.7765C9.75896 15.0745 10.2398 15.0745 10.5367 14.7766L12.277 13.0348C12.5741 12.7367 12.5744 12.253 12.2777 11.9545Z"
+                          />
+                          <path
+                            class="sort-up"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M7.72233 8.04553C8.01904 8.34404 8.5004 8.34436 8.79749 8.04622L10.0005 6.84361L11.2024 8.04616C11.4995 8.34433 11.9808 8.34407 12.2776 8.04558C12.5743 7.7471 12.5741 7.26342 12.277 6.96525L10.5379 5.22346C10.241 4.92554 9.76016 4.92551 9.46332 5.2234L7.72302 6.96519C7.42593 7.26333 7.42562 7.74701 7.72233 8.04553Z"
+                          />
+                        </svg>
+                      </button>
+                    </th>
+                    <th class="actions-head"></th>
+                  </tr>
+                </thead>
+                <tbody id="rows"></tbody>
+              </table>
+              <div id="empty-state" class="empty-state" hidden>
+                <span class="empty-text">Искомая комбинация не найдена</span>
+                <button id="reset-filter" class="empty-reset" type="button">Сбросить фильтр</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="confirmed-tab-panel" class="prototype-empty tab-panel" hidden>
+            В рамках этого прототипа данный раздел не нужен
+          </div>
+          </div>
+
+          <div id="menu-empty-state" class="prototype-empty" hidden>
+            В рамках этого прототипа данный раздел не нужен
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="report-modal" class="report-modal" hidden>
+      <div class="report-modal-overlay" data-modal-close="overlay"></div>
+      <div class="report-modal-card" role="dialog" aria-modal="true" aria-labelledby="report-modal-title">
+        <button
+          id="report-modal-close"
+          class="report-modal-close"
+          type="button"
+          aria-label="Закрыть окно"
+        >
+          <img src="img/close.svg" alt="" />
+        </button>
+
+        <h2 id="report-modal-title">Скачать отчет по заявкам</h2>
+        <p class="report-modal-subtitle">Период отправки заявок</p>
+
+        <div class="report-range-switch" role="group" aria-label="Выбор периода">
+          <button class="report-range-option active" type="button" data-range-mode="all">Весь период</button>
+          <button class="report-range-option" type="button" data-range-mode="custom">Выбрать даты</button>
+        </div>
+
+        <button
+          id="report-date-trigger"
+          class="report-date-input"
+          type="button"
+          aria-label="Выбор диапазона дат"
+          aria-expanded="false"
+        >
+          <span id="report-date-start">16.06.2025</span>
+          <span class="report-date-sep">—</span>
+          <span id="report-date-end">25.06.2025</span>
+          <img class="report-date-icon" src="img/CalendarIcon_20.svg" alt="" />
+        </button>
+        <div id="report-date-popover" class="report-date-popover" hidden>
+          <div class="report-date-grid">
+            <label class="report-date-field">
+              <span>С</span>
+              <input id="report-date-from" type="date" />
+            </label>
+            <label class="report-date-field">
+              <span>По</span>
+              <input id="report-date-to" type="date" />
+            </label>
+          </div>
+          <div class="report-date-actions">
+            <button id="report-date-cancel" class="report-date-action secondary" type="button">Отмена</button>
+            <button id="report-date-apply" class="report-date-action primary" type="button">Применить</button>
+          </div>
+        </div>
+
+        <button id="report-download-btn" class="report-download-btn" type="button">
+          <img src="img/ExportIcon.svg" alt="" />
+          <span>Скачать</span>
+        </button>
+
+        <button id="report-cancel-btn" class="report-cancel-btn" type="button">Отменить</button>
+      </div>
+    </div>
+
+    <div id="report-toast" class="report-toast" hidden>
+      <img id="report-toast-icon" class="report-toast-icon is-loading" src="img/Loader Field.svg" alt="" />
+      <div class="report-toast-content">
+        <p id="report-toast-title" class="report-toast-title">Отчет скачивается</p>
+        <p id="report-toast-text" class="report-toast-text">
+          Файл с отчетом request_report_25-06-2025_08-01-2026.xlsx в процессе загрузки
+        </p>
+      </div>
+      <button id="report-toast-close" class="report-toast-close" type="button" aria-label="Закрыть уведомление">
+        <img src="img/close.svg" alt="" />
+      </button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
